@@ -1,0 +1,21 @@
+#!/bin/sh
+
+count="0"
+while ( [ "`/usr/bin/ip a show eth1 up | /bin/grep 'state UP'`" = "" ] && [ "${count}" -le "10" ] )
+do
+
+    /bin/echo "network:
+  version: 2
+  ethernets:
+    eth1:
+      dhcp4: true" > /etc/netplan/eth1.yaml
+
+     /usr/sbin/netplan apply 2>/dev/null
+     /bin/sleep 10
+   count="`/usr/bin/expr ${count} + 1`"
+done
+
+/usr/bin/apt-get -qq -y update
+/usr/bin/apt-get -qq -y install git
+
+
