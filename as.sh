@@ -182,7 +182,7 @@ ${HOME}/installscripts/InstallMonitoringGear.sh
 #Set the time on the machine
 if ( [ "`/usr/bin/timedatectl list-timezones | /bin/grep ${SERVER_TIMEZONE_CONTINENT} | /bin/grep ${SERVER_TIMEZONE_CITY}`" != "" ] )
 then
-	 /usr/bin/timedatectl set-timezone ${SERVER_TIMEZONE_CONTINENT}/${SERVER_TIMEZONE_CITY}
+	/usr/bin/timedatectl set-timezone ${SERVER_TIMEZONE_CONTINENT}/${SERVER_TIMEZONE_CITY}
 	${HOME}/providerscripts/utilities/StoreConfigValue.sh "SERVERTIMEZONECONTINENT" "${SERVER_TIMEZONE_CONTINENT}"
 	${HOME}/providerscripts/utilities/StoreConfigValue.sh "SERVERTIMEZONECITY" "${SERVER_TIMEZONE_CITY}"
 	export TZ=":${SERVER_TIMEZONE_CONTINENT}/${SERVER_TIMEZONE_CITY}"
@@ -278,7 +278,7 @@ if ( [ "`/bin/grep 'ClientAliveInterval 200' /etc/ssh/sshd_config 2>/dev/null`" 
 then
 	/bin/echo "
 ClientAliveInterval 200
-	ClientAliveCountMax 10" >> /etc/ssh/sshd_config
+ClientAliveCountMax 10" >> /etc/ssh/sshd_config
 fi
 
 /usr/sbin/service sshd restart
