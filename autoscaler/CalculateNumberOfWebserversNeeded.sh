@@ -89,7 +89,7 @@ then
 fi
 
 #We don't want less than 2 webservers so, if somehow, webservers is set to less than 2 default it to 2 to be on the safe side. 
-if ( [ "${NO_WEBSERVERS}" -lt "2" ] )
+if ( [ "${NO_WEBSERVERS}" -lt "2" ] || [ ! -n "${NO_WEBSERVERS}" ] )
 then
 	NO_WEBSERVERS="2"
 fi
