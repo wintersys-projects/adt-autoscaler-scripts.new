@@ -88,11 +88,6 @@ then
 	${HOME}/providerscripts/utilities/StoreConfigValue.sh 'NUMBERWS' "${NO_WEBSERVERS}"
 fi
 
-if ( [ "${scaling_mode}" != "static" ] )
-then
-	exit
-fi
-
 #We don't want less than 2 webservers so, if somehow, webservers is set to less than 2 default it to 2 to be on the safe side. 
 if ( [ "${NO_WEBSERVERS}" -lt "2" ] )
 then
